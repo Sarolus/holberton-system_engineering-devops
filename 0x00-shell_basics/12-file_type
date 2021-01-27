@@ -1,2 +1,2 @@
 !#/bin/bash
-objdump -x /tmp/iamafile
+file /tmp/iamafile
