@@ -1,0 +1,1 @@
+This directory is about different shell basics, you will see different scripts.
