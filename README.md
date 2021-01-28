@@ -7,5 +7,4 @@ about shell. It contains :
 * Shell Permissions (where you will find scripts about users and permissions)
 
 This was produce during my first week at Holberton School.
-[![alt text](https://www.holbertonschool.com/holberton-logo.png)]
-(https://www.holbertonschool.com/fr/fr)
+![alt text](https://www.holbertonschool.com/holberton-logo.png)
