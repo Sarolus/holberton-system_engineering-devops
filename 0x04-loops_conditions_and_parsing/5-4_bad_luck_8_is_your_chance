@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Script that displays "Holberton School" 10 times using while loop.
+#Script that displays "Holberton School" 10 times using while loop. Display "bad luck" for the 4th, and display "good luck" for the 8th.
 i=1
 while [ $i -le 10 ]
 do
