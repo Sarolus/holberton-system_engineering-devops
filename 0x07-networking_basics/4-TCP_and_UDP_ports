@@ -1,0 +1,3 @@
+#!/bin/bash
+#Display listening ports
+ss -lp
