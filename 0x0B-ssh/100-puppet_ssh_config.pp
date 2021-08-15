@@ -2,11 +2,11 @@
 file_line {'Set password auth off':
     ensure => present,
     path   => '/etc/ssh/ssh_config',
-    line   => '\tPasswordAuthentication no',
+    line   => '    PasswordAuthentication no',
 }
 
 file_line {'Add identity file':
     ensure => present,
     path   => '/etc/ssh/ssh_config',
-    line   => '\tIdentityFile ~/.ssh/holberton'
+    line   => '    IdentityFile ~/.ssh/holberton'
 }
