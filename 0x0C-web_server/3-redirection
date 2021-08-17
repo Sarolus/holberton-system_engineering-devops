@@ -3,5 +3,5 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
-sudo sed -i "/listen \[::\]:80 default_server;/a \\n\trewrite ^/redirect_me / permanent;" /etc/nginx/sites-enabled/default
+sudo sed -i '/listen \[::\]:80 default_server;/a \\n\trewrite ^/redirect_me / permanent;' /etc/nginx/sites-enabled/default
 sudo service nginx restart
