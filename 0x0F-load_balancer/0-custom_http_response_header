@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Configure a custom 404 page
+apt-get update
+apt-get -y install nginx
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /var/www/html/404_error.html
+sed -i "/listen \[::\]:80 default_server;/a \\n\terror_page 404 /404_error.html;" /etc/nginx/sites-enabled/default
+sed -i "/listen \[::\]:80 default_server;/a \\n\trewrite ^/redirect_me / permanent;\n\tadd_header X-Served-By \"$hostname\";" /etc/nginx/sites-enabled/default
+service nginx restart
