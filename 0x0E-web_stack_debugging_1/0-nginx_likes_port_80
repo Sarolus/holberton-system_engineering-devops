@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Fix port error
-ln -sf /etc/nginx/sites-available/default etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/default etc/nginx/sites-enabled/
 service nginx restart
-rm /run/nginx.pid
