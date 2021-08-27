@@ -10,10 +10,13 @@ domain_info() {
     echo "The subdomain $SUBDOMAIN is a $RECORD record and points to $IP"
 }
 
-for subdomain in "www", "lb-01", "web-01", "web-02"
-do
-    if [ -z "$2" ] || [ "$2" == "$subdomain" ]
-    then
-        domain_info "$1" "$subdomain"
-    fi
-done
+if [ "$#" == 1 ]
+then
+    domain_info "$1" "www"
+    domain_info "$1" "lb-01"
+    domain_info "$1" "web-01"
+    domain_info "$1" "web-02"
+elif [ "$#" == 2 ]
+then
+    domain_info "$1" "$2"
+fi
