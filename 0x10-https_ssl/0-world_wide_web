@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2086
+# Script that displays information about domain and subdomains.
+
+domain_info() {
+    DOMAIN=$1
+    SUBDOMAIN=$2
+    RECORD=$(dig +noall +answer $SUBDOMAIN.$DOMAIN | awk '{ print $4 }')
+    IP=$(dig +noall +answer $SUBDOMAIN.$DOMAIN | awk '{ print $5 }')
+    echo "The subdomain $SUBDOMAIN is a $RECORD record and points to $IP"
+}
+
+for subdomain in "www", "lb-01", "web-01", "web-02"
+do
+    if [ -z "$2" ] || [ "$2" == "$subdomain" ]
+    then
+        domain_info "$1" "$subdomain"
+    fi
+done
