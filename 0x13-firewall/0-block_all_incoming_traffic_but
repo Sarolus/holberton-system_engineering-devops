@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Install the ufw firewall and setup a few rules on server
+apt-get install ufw -y
+ufw default deny incoming
+ufw allow 22/tcp
+ufw allow 443/tcp
+ufw allow 80/tcp
+ufw enable
