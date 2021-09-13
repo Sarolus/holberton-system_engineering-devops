@@ -15,7 +15,7 @@ def request_user(id):
     """
     url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
     response = requests.get(url)
-    data = response.json()
+    data = json.loads(response.text)
 
     return data
 
@@ -27,7 +27,7 @@ def request_todo(id):
     """
     url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
     response = requests.get(url)
-    data = response.json()
+    data = json.loads(response.text)
 
     return data
 
