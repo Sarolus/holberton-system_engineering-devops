@@ -44,6 +44,7 @@ def request_todo(id):
 
     return data
 
+
 def tasks_done(task_list):
     """
         Retrieve done tasks and make a list of it
@@ -53,10 +54,13 @@ def tasks_done(task_list):
     for tasks in task_list:
         if tasks.get("completed") is True:
             done_tasks_list.append(tasks)
-    
+
     return done_tasks_list
 
-def print_employee_information(employee_name, done_tasks_number, total_tasks_number):
+
+def print_employee_information(
+    employee_name, done_tasks_number, total_tasks_number
+):
     """
         Print employee name, the tasks that they have done on the total
         number of tasks
@@ -74,6 +78,7 @@ def print_done_tasks(done_tasks_list):
     """
     for task in done_tasks_list:
         print("\t {}".format(task.get("title")))
+
 
 def print_done_tasks_by_user(id):
     """
@@ -122,7 +127,7 @@ def export_csv_format(id):
         write_csv_row(id, user_request, todo_request, writer)
 
 
-def format_todo_employee(user:json, tasks:json):
+def format_todo_employee(user: json, tasks: json):
     """
         Write json formatted tasks
     """
@@ -151,7 +156,6 @@ def export_employee_json_format(id):
 
     task_dict = format_todo_employee(user_request, todo_request)
 
-
     with open("{:s}.json".format(id), "w") as file:
         file.write(json.dumps(task_dict))
 
@@ -161,7 +165,7 @@ def export_all_employee_json_format():
         Export the given data in JSON format
     """
     all_user = request_all_user()
-    
+
     all_dict = {}
     for user in all_user:
         id = user.get("id")
@@ -173,6 +177,7 @@ def export_all_employee_json_format():
 
         with open("todo_all_employees.json", "w") as file:
             file.write(json.dumps(all_dict))
+
 
 if __name__ == "__main__":
     export_all_employee_json_format()

@@ -33,6 +33,7 @@ def request_todo(id):
 
     return data
 
+
 def tasks_done(task_list):
     """
         Retrieve done tasks and make a list of it
@@ -42,10 +43,13 @@ def tasks_done(task_list):
     for tasks in task_list:
         if tasks.get("completed") is True:
             done_tasks_list.append(tasks)
-    
+
     return done_tasks_list
 
-def print_employee_information(employee_name, done_tasks_number, total_tasks_number):
+
+def print_employee_information(
+    employee_name, done_tasks_number, total_tasks_number
+):
     """
         Print employee name, the tasks that they have done on the total
         number of tasks
@@ -63,6 +67,7 @@ def print_done_tasks(done_tasks_list):
     """
     for task in done_tasks_list:
         print("\t {}".format(task.get("title")))
+
 
 def print_done_tasks_by_user(id):
     """
