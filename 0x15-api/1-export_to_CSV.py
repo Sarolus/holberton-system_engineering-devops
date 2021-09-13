@@ -88,19 +88,6 @@ def print_done_tasks_by_user(id):
     print_done_tasks(done_tasks_list)
 
 
-def write_csv_row(id, user, task_list, writer):
-    """
-        Write data in a CSV file
-    """
-    for task in task_list:
-        writer.writerow([
-            id,
-            user,
-            task.get("completed"),
-            task.get("title")
-        ])
-
-
 def export_csv_format(id):
     """
         Export the given data in CSV format
@@ -111,8 +98,10 @@ def export_csv_format(id):
                         .format(id)).json()
 
     with open("{}.csv".format(id), "w") as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL, lineterminator='\n')
-        write_csv_row(id, username, todo, writer)
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+        [writer.writerow(
+            [id, username, task.get("completed"), task.get("title")]
+         ) for task in todo]
 
 
 if __name__ == "__main__":
