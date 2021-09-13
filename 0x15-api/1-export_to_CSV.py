@@ -105,16 +105,14 @@ def export_csv_format(id):
     """
         Export the given data in CSV format
     """
-    if len(argv) < 2:
-        return
-
     user_request = request_user(id)
     todo_request = request_todo(id)
 
-    with open("{:s}.csv".format(id), "w") as file:
+    with open("{}.csv".format(id), "w") as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         write_csv_row(id, user_request, todo_request, writer)
 
 
 if __name__ == "__main__":
-    export_csv_format(argv[1])
+    if len(argv) == 2:
+        export_csv_format(argv[1])
