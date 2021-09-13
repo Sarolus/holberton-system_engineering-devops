@@ -105,6 +105,8 @@ def export_csv_format(id):
     """
         Export the given data in CSV format
     """
+    if len(argv) < 2:
+        return
 
     user_request = request_user(id)
     todo_request = request_todo(id)
