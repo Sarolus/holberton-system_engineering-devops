@@ -108,8 +108,8 @@ def export_csv_format(id):
     user_request = request_user(id)
     todo_request = request_todo(id)
 
-    with open("{}.csv".format(id), "w") as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+    with open("{:s}.csv".format(id), "w") as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL, lineterminator="\n")
         write_csv_row(id, user_request, todo_request, writer)
 
 
