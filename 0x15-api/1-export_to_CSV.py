@@ -95,7 +95,7 @@ def write_csv_row(id, user, task_list, writer):
     for task in task_list:
         writer.writerow([
             id,
-            user.get("username"),
+            user,
             task.get("completed"),
             task.get("title")
         ])
@@ -105,12 +105,14 @@ def export_csv_format(id):
     """
         Export the given data in CSV format
     """
-    user_request = request_user(id)
-    todo_request = request_todo(id)
+    username = requests.get('https://jsonplaceholder.typicode.com/users/{}'
+                            .format(id)).json().get('username')
+    todo = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
+                        .format(id)).json()
 
     with open("{}.csv".format(id), "w") as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL, lineterminator="\n")
-        write_csv_row(id, user_request, todo_request, writer)
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL, lineterminator='\n')
+        write_csv_row(id, username, todo, writer)
 
 
 if __name__ == "__main__":
