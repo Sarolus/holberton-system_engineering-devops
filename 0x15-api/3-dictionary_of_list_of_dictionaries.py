@@ -3,11 +3,9 @@
     Export data to JSON format
 """
 import csv
-import requests
 import json
+import requests
 from sys import argv
-
-from requests.api import request
 
 
 def request_user(id):
