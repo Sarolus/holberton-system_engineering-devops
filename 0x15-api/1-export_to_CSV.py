@@ -31,6 +31,7 @@ def request_todo(id):
 
     return data
 
+
 def write_csv_row(id, user, task_list, writer):
     """
         Write data in a CSV file
