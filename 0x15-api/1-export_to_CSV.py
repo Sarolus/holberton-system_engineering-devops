@@ -97,8 +97,8 @@ def export_csv_format(id):
     todo = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
                         .format(id)).json()
 
-    with open("{}.csv".format(id), "w") as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+    with open("{}.csv".format(id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         [writer.writerow(
             [id, username, task.get("completed"), task.get("title")]
          ) for task in todo]
