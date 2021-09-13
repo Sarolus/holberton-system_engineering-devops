@@ -52,7 +52,7 @@ def print_employee_information(
         Print employee name, the tasks that they have done on the total
         number of tasks
     """
-    print("Employee {} is done with tasks({}/{})".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         employee_name,
         done_tasks_number,
         total_tasks_number,
@@ -143,7 +143,7 @@ def export_employee_json_format(id):
 
     task_dict = format_todo_employee(user_request, todo_request)
 
-    with open("{:s}.json".format(id), "w") as file:
+    with open("{:s}.json".format(id), "w",) as file:
         file.write(json.dumps(task_dict))
 
 
