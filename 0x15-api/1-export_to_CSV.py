@@ -15,7 +15,7 @@ def request_user(id):
     """
     url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
     response = requests.get(url)
-    data = json.loads(response.text)
+    data = response.json()
 
     return data
 
@@ -27,7 +27,7 @@ def request_todo(id):
     """
     url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
     response = requests.get(url)
-    data = json.loads(response.text)
+    data = response.json()
 
     return data
 
@@ -88,19 +88,6 @@ def print_done_tasks_by_user(id):
     print_done_tasks(done_tasks_list)
 
 
-def write_csv_row(id, user, task_list, writer):
-    """
-        Write data in a CSV file
-    """
-    for task in task_list:
-        writer.writerow([
-            id,
-            user.get("username"),
-            task.get("completed"),
-            task.get("title")
-        ])
-
-
 def export_csv_format(id):
     """
         Export the given data in CSV format
@@ -113,7 +100,13 @@ def export_csv_format(id):
 
     with open("{:s}.csv".format(id), "w") as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
-        write_csv_row(id, user_request, todo_request, writer)
+        for task in todo_request:
+            writer.writerow([
+                id,
+                user_request.get("username"),
+                task.get("completed"),
+                task.get("title")
+            ])
 
 
 if __name__ == "__main__":
