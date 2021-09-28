@@ -4,16 +4,20 @@
 """
 import requests
 
+
 def recurse(subreddit, hot_list=[], after="t3_"):
     """
         Returns a list containing the titles of all hot articles for
         a given subreddit.
     """
 
-    url = "https://www.reddit.com/r/{}/hot.json?after={}".format(subreddit, after)
+    url = "https://www.reddit.com/r/{}/hot.json?after={}".format(
+        subreddit,
+        after
+    )
     UserAgent = {"User-Agent": "ubuntu:test:v1.0 (by /u/kemitche)"}
 
-    request = requests.get(url, headers=UserAgent ,allow_redirects=False)
+    request = requests.get(url, headers=UserAgent, allow_redirects=False)
 
     if request.status_code == 404:
         return None
